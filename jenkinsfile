@@ -7,7 +7,7 @@ pipeline {
 
         stage('Clone') {
             steps {
-                git 'https://github.com/bhagwati021/jenkins_nodejs_app'
+                git clone 'https://github.com/bhagwati021/jenkins_nodejs_app'
             }
         }
         stage('Build') {
