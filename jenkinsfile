@@ -1,0 +1,29 @@
+Jenkinsfile (Declarative Pipeline)
+pipeline {
+    agent {
+        docker { image 'node:20.17.0-alpine3.20' }
+    }
+    stages {
+
+        stage('Clone') {
+            steps {
+                git 'https://github.com/bhagwati021/jenkins_nodejs_app'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'npm run build'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'node --version'
+                sh 'npm test'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                sh 'npm start'
+            }
+    }
+}
